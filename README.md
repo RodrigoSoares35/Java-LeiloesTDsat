@@ -1,7 +1,9 @@
 # Projeto Java Leilão
-## Descrição do Projeto
+
+## Descrição do Projeto✒
 Sistema para Cadastro de produtos para Leilão
-## Tecnologias Utilizadas
+
+## Tecnologias Utilizadas💻
 - Java
 - Mysql
 - Git bash
