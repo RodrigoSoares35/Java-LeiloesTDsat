@@ -1,6 +1,9 @@
 
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 
 public class listagemVIEW extends javax.swing.JFrame {
@@ -8,9 +11,40 @@ public class listagemVIEW extends javax.swing.JFrame {
     
     public listagemVIEW() {
         initComponents();
-        listarProdutos();
+       // listarProdutos();
+       preencherTabela();
     }
-
+     private void preencherTabela(){
+         
+       ProdutosDAO dao = new ProdutosDAO();
+       boolean status = dao.conectar();
+        
+       if(status == false){
+           JOptionPane.showMessageDialog(null, "erro de conexão");
+       }else{
+            List<ProdutosDTO> listarProdutos = dao.listarProdutos();
+            
+            DefaultTableModel tabelaProdutos = (DefaultTableModel) listaProdutos.getModel();
+            listaProdutos.setRowSorter(new TableRowSorter(tabelaProdutos));
+            tabelaProdutos.setNumRows(0);
+            
+            // percorrer o listaProdutose inserir na tabelaProdutos
+            for (ProdutosDTO p : listarProdutos){
+                Object[] obj = new Object[]{
+                    p.getId(),
+                    p.getNome(),
+                    p.getValor(),
+                    p.getStatus(),
+                    
+                };
+                //colocar os dados da variavel obj dentro da tabela
+                tabelaProdutos.addRow(obj);
+            }
+            dao.desconectar();
+      }
+    }
+    
+     
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -169,7 +203,7 @@ public class listagemVIEW extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
             model.setNumRows(0);
             
-            ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos();
+            ArrayList<ProdutosDTO> listagem = (ArrayList<ProdutosDTO>) produtosdao.listarProdutos();
             
             for(int i = 0; i < listagem.size(); i++){
                 model.addRow(new Object[]{

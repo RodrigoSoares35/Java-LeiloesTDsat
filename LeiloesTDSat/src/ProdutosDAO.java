@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ProdutosDAO {
@@ -30,7 +31,7 @@ public class ProdutosDAO {
     }
     
     public int cadastrarProduto (ProdutosDTO produto){
-        //conn = new conectaDAO().connectDB();
+        
          int status;
         
         try {
@@ -43,18 +44,45 @@ public class ProdutosDAO {
             return status; 
             
             } catch (SQLException ex) {
-            System.out.println("“Não foi possível SALVAR os dados! Por favor, verifique valores digitados!”." + ex.getMessage());
+            System.out.println("“Não foi possível SALVAR os dados! \nPor favor, verifique valores digitados!”." + ex.getMessage());
             return ex.getErrorCode();
             }
     }    
     
+   
+    public List<ProdutosDTO> listarProdutos() {
+    String sql = "SELECT * FROM produtos";
+    List<ProdutosDTO> lista = new ArrayList<>();
     
-    public ArrayList<ProdutosDTO> listarProdutos(){
+    try (PreparedStatement prep = conn.prepareStatement(sql);
+         ResultSet resultset = prep.executeQuery()) {
         
-        return listagem;
+        while (resultset.next()) {
+            ProdutosDTO produto = new ProdutosDTO();
+            produto.setId(resultset.getInt("id"));
+            produto.setNome(resultset.getString("nome"));
+            produto.setValor(resultset.getInt("valor"));
+            produto.setStatus(resultset.getString("status"));
+            
+            lista.add(produto);
+        }
+        
+    } catch (SQLException ex) {
+        System.err.println("Erro ao conectar: " + ex.getMessage());
+        
     }
     
-    
+    return lista;
+}
+      public void desconectar(){
+      try {
+            conn.close();
+
+          } catch (SQLException ex) {
+          JOptionPane.showMessageDialog(null,"Erro de conexão");
+
+}
+}       
     
         
 }
