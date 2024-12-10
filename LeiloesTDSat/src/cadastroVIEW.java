@@ -136,7 +136,7 @@ public class cadastroVIEW extends javax.swing.JFrame {
         ProdutosDAO produtodao = new ProdutosDAO();
         
        
-        boolean status2 = true;
+        boolean conexao = true;
         
         String nome = cadastroNome.getText();
         String valor = cadastroValor.getText();
@@ -147,7 +147,7 @@ public class cadastroVIEW extends javax.swing.JFrame {
         produto.setStatus(status);
         
         produtodao = new ProdutosDAO();
-        status2 = produtodao.conectar();
+        conexao = produtodao.conectar();
         
         produtodao.cadastrarProduto(produto);
         
@@ -158,7 +158,7 @@ public class cadastroVIEW extends javax.swing.JFrame {
         cadastroValor.setText(null);
       
      
-         if(status2 == false){
+         if(conexao == false){
        JOptionPane.showMessageDialog(null,"Erro de conexão!");
        }
          
