@@ -40,7 +40,6 @@ public class listagemVIEW extends javax.swing.JFrame {
             dao.desconectar();
         }
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -188,27 +187,25 @@ public class listagemVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-        try{
-        ProdutosDAO produtosdao = new ProdutosDAO();
-         ProdutosDTO produto = new ProdutosDTO();
-         
-          boolean status;
-         int resposta;
-         
-          if (CboxStatusProduto.getSelectedItem().equals("Vendido")) {
+        try {
+            ProdutosDAO produtosdao = new ProdutosDAO();
+            ProdutosDTO produto = new ProdutosDTO();
+
+            boolean status;
+            int resposta;
+
+            if (CboxStatusProduto.getSelectedItem().equals("Vendido")) {
                 produto.setStatus("Vendido");
-            } 
-          else if(CboxStatusProduto.getSelectedItem().equals("A Venda")) {
+            } else if (CboxStatusProduto.getSelectedItem().equals("A Venda")) {
                 produto.setStatus("A Venda");
-           }
-           else {
+            } else {
                 JOptionPane.showMessageDialog(null, "Por favor\n Preencha  o Campos Status!");
             }
-          
-          if (CboxStatusProduto.getSelectedItem() != "Escolha o Status") {
+
+            if (CboxStatusProduto.getSelectedItem() != "Escolha o Status") {
 
                 produto.setId(Integer.parseInt(txtId.getText()));
-                
+
             }
             produtosdao = new ProdutosDAO();
             status = produtosdao.conectar();
@@ -221,30 +218,27 @@ public class listagemVIEW extends javax.swing.JFrame {
 
                 if (resposta == 1) {
                     JOptionPane.showMessageDialog(null, "Dados atualizados com sucesso");
-                    
+
                     // Limpar Campos
                     CboxStatusProduto.setSelectedItem("Escolha o Status");
                     txtId.setText(null);
-                    
+
                     preencherTabela();
                 }
-                 produtosdao.desconectar();
-                }
-            
-        
-         } catch (Exception e) {
+                produtosdao.desconectar();
+            }
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ocorreu uma falha!:\n" + e.getMessage());
         }
 
-       // String id = id_produto_venda.getText();
-        //produtosdao.venderProduto(Integer.parseInt(id));
-        //listarProdutos();
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnConsultarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarVendasActionPerformed
-        vendasVIEW vendas = new vendasVIEW(); 
+        vendasVIEW vendas = new vendasVIEW();
         vendas.setVisible(true);
         vendas.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_btnConsultarVendasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

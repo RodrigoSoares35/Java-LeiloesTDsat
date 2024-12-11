@@ -8,11 +8,12 @@ public class vendasVIEW extends javax.swing.JFrame {
 
     public vendasVIEW() {
         initComponents();
-       preencherTabelaStatus("");
+        preencherTabelaStatus("");
     }
+
     private void preencherTabelaStatus(String filtro) {
 
-        ProdutosDAO produtodao = new  ProdutosDAO();
+        ProdutosDAO produtodao = new ProdutosDAO();
         boolean status = produtodao.conectar();
 
         if (status == false) {
@@ -30,8 +31,7 @@ public class vendasVIEW extends javax.swing.JFrame {
                     produto.getId(),
                     produto.getNome(),
                     produto.getValor(),
-                    produto.getStatus(),
-                    };
+                    produto.getStatus(),};
 
                 //colocar os dados da variavel obj dentro da tabela
                 tabelaVendido.addRow(obj);
@@ -40,6 +40,7 @@ public class vendasVIEW extends javax.swing.JFrame {
         }
 
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -132,7 +133,7 @@ public class vendasVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     public static void main(String args[]) {
-       
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new vendasVIEW().setVisible(true);
