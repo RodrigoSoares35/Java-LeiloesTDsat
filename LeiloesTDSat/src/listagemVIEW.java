@@ -40,6 +40,7 @@ public class listagemVIEW extends javax.swing.JFrame {
             dao.desconectar();
         }
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -53,7 +54,7 @@ public class listagemVIEW extends javax.swing.JFrame {
         txtId = new javax.swing.JTextPane();
         btnVender = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        btnVendas = new javax.swing.JButton();
+        btnConsultarVendas = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         CboxStatusProduto = new javax.swing.JComboBox<>();
@@ -95,11 +96,11 @@ public class listagemVIEW extends javax.swing.JFrame {
             }
         });
 
-        btnVendas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnVendas.setText("Consultar Vendas");
-        btnVendas.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultarVendas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConsultarVendas.setText("Consultar Vendas");
+        btnConsultarVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVendasActionPerformed(evt);
+                btnConsultarVendasActionPerformed(evt);
             }
         });
 
@@ -144,7 +145,7 @@ public class listagemVIEW extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnVoltar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnConsultarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -178,7 +179,7 @@ public class listagemVIEW extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVendas)
+                    .addComponent(btnConsultarVendas)
                     .addComponent(btnVoltar))
                 .addGap(17, 17, 17))
         );
@@ -240,10 +241,11 @@ public class listagemVIEW extends javax.swing.JFrame {
         //listarProdutos();
     }//GEN-LAST:event_btnVenderActionPerformed
 
-    private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        //vendasVIEW vendas = new vendasVIEW(); 
-        //vendas.setVisible(true);
-    }//GEN-LAST:event_btnVendasActionPerformed
+    private void btnConsultarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarVendasActionPerformed
+        vendasVIEW vendas = new vendasVIEW(); 
+        vendas.setVisible(true);
+        vendas.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnConsultarVendasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         cadastroVIEW telaInicial = new cadastroVIEW();
@@ -263,7 +265,7 @@ public class listagemVIEW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CboxStatusProduto;
-    private javax.swing.JButton btnVendas;
+    private javax.swing.JButton btnConsultarVendas;
     private javax.swing.JButton btnVender;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
