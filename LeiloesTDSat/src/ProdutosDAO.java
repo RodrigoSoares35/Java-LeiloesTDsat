@@ -100,7 +100,7 @@ public class ProdutosDAO {
         }
     }
     // FILTRO POR STATUS
-   /* public List<ProdutosDTO> listagemStatus(String filtro) {
+   public List<ProdutosDTO> listagemStatus(String filtro) {
 
         String sql = "select * from produtos where status = 'Vendido'";
         try {
@@ -121,8 +121,8 @@ public class ProdutosDAO {
         } catch (SQLException ex) {
             System.out.println("Erro ao conectar: " + ex.getMessage());
             return null;
-        }*/
-    //}
+        }
+    }
         
 }
 
