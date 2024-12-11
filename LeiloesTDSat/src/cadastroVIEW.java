@@ -1,14 +1,12 @@
 
 import javax.swing.JOptionPane;
 
-
 public class cadastroVIEW extends javax.swing.JFrame {
 
     public cadastroVIEW() {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -125,64 +123,61 @@ public class cadastroVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastroNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroNomeActionPerformed
-        
-        
+
+
     }//GEN-LAST:event_cadastroNomeActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-       
+
         try {
-        ProdutosDTO produto = new ProdutosDTO();
-        ProdutosDAO produtodao = new ProdutosDAO();
-        
-       
-        boolean conexao = true;
-        
-        String nome = cadastroNome.getText();
-        String valor = cadastroValor.getText();
-        String status = "A Venda";
-        
-        produto.setNome(nome);
-        produto.setValor(Integer.parseInt(valor));
-        produto.setStatus(status);
-        
-        produtodao = new ProdutosDAO();
-        conexao = produtodao.conectar();
-        
-        produtodao.cadastrarProduto(produto);
-        
-        JOptionPane.showMessageDialog(null,"Dados incluidos com Sucesso!");
-        
-        // LIMPAR CAMPOS
-        cadastroNome.setText(null);
-        cadastroValor.setText(null);
-      
-     
-         if(conexao == false){
-       JOptionPane.showMessageDialog(null,"Erro de conexão!");
-       }
-         
-      }catch(Exception e){
-          JOptionPane.showMessageDialog(this, "Ocorreu uma falha!:\n" + e.getMessage());
-      }
-        
+            ProdutosDTO produto = new ProdutosDTO();
+            ProdutosDAO produtodao = new ProdutosDAO();
+
+            boolean conexao = true;
+
+            String nome = cadastroNome.getText();
+            String valor = cadastroValor.getText();
+            String status = "A Venda";
+
+            produto.setNome(nome);
+            produto.setValor(Integer.parseInt(valor));
+            produto.setStatus(status);
+
+            produtodao = new ProdutosDAO();
+            conexao = produtodao.conectar();
+
+            produtodao.cadastrarProduto(produto);
+
+            JOptionPane.showMessageDialog(null, "Dados incluidos com Sucesso!");
+
+            // LIMPAR CAMPOS
+            cadastroNome.setText(null);
+            cadastroValor.setText(null);
+
+            if (conexao == false) {
+                JOptionPane.showMessageDialog(null, "Erro de conexão!");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocorreu uma falha!:\n" + e.getMessage());
+        }
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
-        listagemVIEW listagem = new listagemVIEW(); 
+        listagemVIEW listagem = new listagemVIEW();
         listagem.setVisible(true);
         listagem.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_btnProdutosActionPerformed
 
-   
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-              cadastroVIEW telaInicial =  new cadastroVIEW();
-              telaInicial.setVisible(true);
-              telaInicial.setLocationRelativeTo(null);
+                cadastroVIEW telaInicial = new cadastroVIEW();
+                telaInicial.setVisible(true);
+                telaInicial.setLocationRelativeTo(null);
             }
         });
     }

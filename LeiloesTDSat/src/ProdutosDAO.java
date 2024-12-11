@@ -82,7 +82,23 @@ public class ProdutosDAO {
           JOptionPane.showMessageDialog(null,"Erro de conexão");
 
 }
-}       
+}     
+       public int atualizar(ProdutosDTO produto) {
+        int status;
+        
+        try {
+            prep = conn.prepareStatement("UPDATE produtos SET status = ? WHERE id = ?");
+
+            prep.setString(1, produto.getStatus());
+            prep.setInt(2, produto.getId());
+            status = prep.executeUpdate();
+            return status;
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao atualizar: " + ex.getMessage());
+            return ex.getErrorCode();
+        }
+    }
     
         
 }
